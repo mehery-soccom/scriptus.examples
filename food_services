@@ -1,0 +1,348 @@
+function onMessageReceive(){
+  return $.reply({
+    text :  {
+      body : "Welcome to Food at your Door. Please select the language:"
+     },
+     options : { // giving the user option to select the language 
+       buttons : ["हिन्दी","English"] 
+     }
+  }).listen({ // .listen helps us accept the text or code entered by the user
+    text : "हिन्दी",
+    handler : hindiHandler  
+  },{
+    text : "English",
+    handler : englishHandler  // we call the function to whom the flow control is passed on to
+  },otherHandle); 
+}
+function hindiHandler() {
+  $.reply({
+  template: {
+    code: "our_services_hindi",
+    data: {
+      amount: 10,
+      currency: "INR"
+    },
+    lang: "en_US"
+  }
+}).listen({
+      text: "नए आदेश",
+      
+      handler: neworderhindihandler
+    },
+    {
+      text: "डिलीवरी का समय",
+      
+      handler: deliverytimingss_hindihandler
+    },
+    {
+      text: "अपने आदेश को देखो",
+      
+      handler: connecttoagent_hindihandler
+    },{
+      text: "बार बार पूछे जाने वाले प्रश्न",
+      
+      handler:FAQ
+    },{
+      text: "ग्राहक सेवा",
+      
+      handler: FAQ_hindi
+    });
+}
+function englishHandler() {
+ $.reply({
+  template: {
+    code: "our_services", // connecting the template to be sent
+    lang: "en_US"
+  }
+}).listen({
+      text: "New Order",
+      handler: neworderhandler
+    },
+    {
+      text: "Delivery Timings",
+      handler: deliverytimingss_hindihandler
+    },
+    {
+      text: "Track your order",
+      handler: connecttoagenthandler
+    },{
+      text: "FAQ",
+      handler:FAQ
+    },{
+      text: "Customer Service",
+      handler: connecttoagenthandler
+    });
+}
+function otherHandle(){ // this function is passes when the customer enter a incorrect input
+  $.reply({
+        text: {
+            body: "Invalid Input"
+        },
+        options: {
+            buttons: ["Main Menu", "Close Chat"]
+        }
+    }).listen({
+        text: "Main Menu",
+        handler: englishHandler
+    }, {
+        code: "Close Chat",
+        handler: endHandler
+    }, otherHandle);
+}
+
+function neworderhindihandler(){
+  $.reply({
+  template: {
+    code: "new_order_hindi",
+    lang: "en_US"
+  }
+  }).listen({
+    text : "*",
+    handler : hindiHandler 
+  },
+  {
+    text : "#",
+    handler : connecttoagenthandler
+  },otherHandle_hindi);
+}
+function neworderhandler(){
+  $.reply({
+  template: {
+    code: "new_order",
+    lang: "en_US"
+  }
+  }).listen({
+    text : "*",
+    handler : englishHandler 
+  },
+  {
+    text : "#",
+    handler : connecttoagenthandler
+  },otherHandle);
+}
+
+function connecttoagenthandler(){
+  $.reply({
+    text :  {
+      body : "Thank you, Customer service will contact you as soon as possible."// Read Customer input
+     }
+     
+  });
+  $.route.to.team("online_team"); 
+  
+}
+
+function connecttoagent_hindihandler(){
+  $.reply({
+    text :  {
+      body : "धन्यवाद, ग्राहक सेवा जल्द से जल्द आपसे संपर्क करेगी।"// Read Customer input
+     }
+     
+  });
+  $.route.to.team("online_team"); //  connecting to the live agent 
+  
+}
+function deliverytimingsshandler()
+{
+  $.reply({
+  template: {
+    code: "delivery_timings",
+    lang: "en_US"
+  }
+  }).listen({
+    text : "*",
+    handler : englishHandler // connects to the main menu again
+  },
+  {
+    text : "#",
+    handler : connecttoagenthandler
+  },otherHandle);
+}
+
+function deliverytimingss_hindihandler()
+{
+  $.reply({
+  template: {
+    code: "delivery_timings_hindi",
+    lang: "en_US"
+  }
+  }).listen({
+    text : "*",
+    handler : hindiHandler //If answer is "Good"
+  },
+  {
+    text : "#",
+    handler : connecttoagenthandler
+  },otherHandle_hindi);
+}
+
+
+function endHandler() {
+    
+    return $.session.close();  // ends the conversation and send a feedback message.
+}
+function FAQ()
+{
+  $.reply({
+  template: {
+    code: "faq_hindi",
+    lang: "en_US"
+  }
+  }).listen({
+    text : "Edit Order",
+    handler : edit_order
+  },
+  {
+    text : "Quality/Quantity",
+    handler : QQhandler
+  },
+  {
+    text : "Bulk Order",
+    handler :bulkorderhandler
+  });
+}
+
+function FAQ_hindi()
+{
+  $.reply({
+  template: {
+    code: "faq_hind",
+    lang: "en_US"
+  }
+  }).listen({
+    text : "Edit Order",
+    handler : editorder_hindihandler
+  },
+  {
+    text : "Quality/Quantity",
+    handler : QQhandler_hindi
+  },
+  {
+    text : "Bulk Order",
+    handler : bulkorder_hindihandler
+  });
+}
+
+
+
+function QQhandler_hindi()
+{
+  $.reply({
+  template: {
+    code: "qqhandler_hindi",
+    lang: "en_US"
+  }
+  }).listen({
+    text : "*",
+    handler : hindiHandler 
+  },
+  {
+    text : "#",
+    handler : connecttoagent_hindihandler
+  },otherHandle_hindi);
+}
+
+function editorder_hindihandler()
+{
+  $.reply({
+  template: {
+    code: "edit_order_hindi",
+    lang: "en_US"
+  }
+  }).listen({
+    text : "*",
+    handler : hindiHandler 
+  },
+  {
+    text : "#",
+    handler : connecttoagent_hindihandler
+  },otherHandle_hindi);
+}
+
+function bulkorder_hindihandler()
+{
+  $.reply({
+  template: {
+    code: "bulk_order_hindi",
+    lang: "en_US"
+  }
+  }).listen({
+    text : "*",
+    handler : hindiHandler 
+  },
+  {
+    text : "#",
+    handler : connecttoagent_hindihandler
+  },otherHandle_hindi);
+}
+
+function otherHandle_hindi(){ // this function is passes when the customer enter a incorrect input
+  $.reply({
+        text: {
+            body: "Invalid Input"
+        },
+        options: {
+            buttons: ["Main Menu", "Close Chat"]
+        }
+    }).listen({
+        text: "Main Menu",
+        handler: englishHandler
+    }, {
+        code: "Close Chat",
+        handler: endHandler
+    }, otherHandle_hindi);
+}
+
+
+function editorderhandler()
+{
+  $.reply({
+  template: {
+    code: "edit_order",
+    lang: "en_US"
+  }
+  }).listen({
+    text : "*",
+    handler : englishHandler 
+  },
+  {
+    text : "#",
+    handler : connecttoagenthandler
+  },otherHandle);
+}
+
+function QQhandler()
+{
+  $.reply({
+  template: {
+    code: "quantity_quality",
+    lang: "en_US"
+  }
+  }).listen({
+    text : "*",
+    handler : englishHandler 
+  },
+  {
+    text : "#",
+    handler : connecttoagenthandler
+  },otherHandle);
+}
+
+function bulkorderhandler()
+{
+  $.reply({
+  template: {
+    code: "bulk_order",
+    lang: "en_US"
+  }
+  }).listen({
+    text : "*",
+    handler : englishHandler 
+  },
+  {
+    text : "#",
+    handler : connecttoagenthandler
+  },otherHandle);
+}
+
+
