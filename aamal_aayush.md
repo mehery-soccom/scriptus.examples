@@ -46,7 +46,7 @@ As you can see in the above code, after any button is selected the various handl
 >The above function specifies the content of the first message to be appeared on the chat screen. The output will be seen as below:
 >
 ><!-- ![](./assets/firstmessage.PNG) -->
-><img src="assets/aayush/firstmessage.png" width="300"  style="vertical-align:middle;
+><img src="assets/aayush/firstmessage.PNG" width="300"  style="vertical-align:middle;
 display: block;margin-left: auto;
 margin-right: auto;
 width: 50%;">
@@ -96,7 +96,7 @@ function englishHandler() {
 Here, the englishhandler is called if English is typed or selection after the first function. This in turn has a menu and passed different handlers on different outputs.
 
 >The englishHandler will look like this
-><img src="assets/aayush/englishhandler.png" width="300"  style="vertical-align:middle;
+><img src="assets/aayush/englishhandler.PNG" width="300"  style="vertical-align:middle;
 display: block;margin-left: auto;
 margin-right: auto;
 width: 50%;">
@@ -129,9 +129,9 @@ function workinghourshandler()
 <br>
 It refers to the HSM template created on your domain and direcly calls it. The template has all the attribute and is easier to use. 
 <br>The template is as follows:
-<img src="assets/aayush/workinghours.png">
+<img src="assets/aayush/workinghours.PNG">
 >The reply will be
-><img src="assets/aayush/workinghoursreply.png" width="300"  style="vertical-align:middle;
+><img src="assets/aayush/workinghoursreply.PNG" width="300"  style="vertical-align:middle;
 display: block;margin-left: auto;
 margin-right: auto;
 width: 50%;">
