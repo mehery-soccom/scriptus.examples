@@ -277,6 +277,9 @@ Typing * redirects to the main menu and # connects the user to an agent
 `template:{}`
 It refers to the HSM template created on your domain and direcly calls it. The template has all the attribute and is easier to use.
 The template is as follows:
+![image](https://user-images.githubusercontent.com/84177129/190642363-528dd1bc-1c0f-49db-9889-6aa0d2715e05.png)
+![image](https://user-images.githubusercontent.com/84177129/190642393-6bd69fc5-b325-4cac-acbd-cdf18a9a77b0.png)
+
 
 now lets look at the handlers section
 
