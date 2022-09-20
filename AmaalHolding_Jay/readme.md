@@ -17,7 +17,7 @@ The Bot flow is such that there is maximum interaction of the user with the bot 
 https://www.loom.com/share/28659be07f1b41eeaf926789c566d582
 
 ## 6. Code
-
+```javascript
 function onMessageReceive(){
         $.reply({
         text: {
@@ -206,3 +206,4 @@ function endHandler() {
     });
     return $.session.close();
 }
+```
