@@ -10,13 +10,16 @@ The Bot Flow will first ask the user to select a language, with the options bein
 ## 3. Flowchart
 ![alt text](https://github.com/jayzobalia/scriptus.examples/blob/master/AmaalHolding_Jay/Screenshot%20(345).png)
 
-## 4. Code Explaination
+## 4. Presenataion
+https://www.canva.com/design/DAFFLgHH0ec/v07j8MgBS18RnMdi4QBMVQ/view?utm_content=DAFFLgHH0ec&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+## 5. Code Explaination
 The Bot flow is such that there is maximum interaction of the user with the bot and minimal agent involvement. At any point in the conversation, the flow of the bot would not be interrupted. Even if there is an invalid response from the user the Bot will handle it with an invalid function redirecting the flow to the actual sequence. The flow has options wherein the user can end the chat and the session would be closed and resolved without any agent involvement. In the case the user requests customer support, he/she can access it at multiple points in the conversation.
 
-## 5. Video Explaination
+## 6. Video Explaination
 https://www.loom.com/share/28659be07f1b41eeaf926789c566d582
 
-## 6. Code
+## 7. Code
 ```javascript
 function onMessageReceive(){
         $.reply({
